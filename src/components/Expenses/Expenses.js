@@ -6,16 +6,14 @@ import { useState } from "react";
 
 const Expenses = (props) => {
   const [enteredYear, setYear] = useState("2020");
-  const [yearExpenses, setYearExpenses] = useState(props.expenses);
 
   const saveYearDataHandler = (enteredData) => {
     setYear(enteredData);
-    setYearExpenses(
-      props.expenses.filter(
-        (expense) => expense.date.getFullYear() === Number(enteredYear)
-      )
-    );
   };
+
+  const yearExpenses = props.expenses.filter(
+    (expense) => expense.date.getFullYear() === Number(enteredYear)
+  );
 
   return (
     <Card className="expenses">
